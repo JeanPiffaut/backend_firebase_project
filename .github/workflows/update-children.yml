@@ -1,52 +1,52 @@
 name: Update Child Repositories
 
 on:
-  release:
-    types: [published]
+    release:
+        types: [published]
 
 jobs:
-  update-children:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    update-children:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
 
-      - name: Set up Git
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            - name: Set up Git
+              run: |
+                  git config --global user.name 'github-actions[bot]'
+                  git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Install GitHub CLI
-        run: |
-          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-          sudo apt-add-repository https://cli.github.com/packages
-          sudo apt update
-          sudo apt install gh
+            - name: Install GitHub CLI
+              run: |
+                  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+                  sudo apt-add-repository https://cli.github.com/packages
+                  sudo apt update
+                  sudo apt install gh
 
-      - name: Authenticate GitHub CLI
-        run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+            - name: Authenticate GitHub CLI
+              run: |
+                  echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
 
-      - name: Update child repositories
-        run: |
-          CHILD_REPOS=("owner/child-repo1" "owner/child-repo2")
-          for repo in "${CHILD_REPOS[@]}"; do
-            REPO_NAME=$(basename "$repo")
-            git clone https://github.com/$repo.git
-            cd $REPO_NAME
-            git remote add template https://github.com/${{ github.repository }}.git
-            git fetch template
-            git checkout -b update-from-template
-            git merge template/master --allow-unrelated-histories
-            git push origin update-from-template
-          
-            # Create an issue
-            ISSUE_URL=$(gh issue create --title "Update from template" --body "This issue tracks the update from the template repository." --repo $repo --json url -q .url)
-          
-            # Create a pull request
-            gh pr create --title "Update from template" --body "This PR includes updates from the template repository. Please review and merge." --head update-from-template --base master --repo $repo
-          
-            cd ..
-          done
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Update child repositories
+              run: |
+                  CHILD_REPOS=("owner/child-repo1" "owner/child-repo2")
+                  for repo in "${CHILD_REPOS[@]}"; do
+                    REPO_NAME=$(basename "$repo")
+                    git clone https://github.com/$repo.git
+                    cd $REPO_NAME
+                    git remote add template https://github.com/${{ github.repository }}.git
+                    git fetch template
+                    git checkout -b update-from-template
+                    git merge template/master --allow-unrelated-histories
+                    git push origin update-from-template
+
+                    # Create an issue
+                    ISSUE_URL=$(gh issue create --title "Update from template" --body "This issue tracks the update from the template repository." --repo $repo --json url -q .url)
+
+                    # Create a pull request
+                    gh pr create --title "Update from template" --body "This PR includes updates from the template repository. Please review and merge." --head update-from-template --base master --repo $repo
+
+                    cd ..
+                  done
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
