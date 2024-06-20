@@ -54,8 +54,8 @@ backend_firebase_project/
 
 ## Requisitos
 
-- Node.js (versión 18.x)
-- npm (versión 8.x)
+- Node.js (versión 20.x)
+- npm (versión 10.x)
 
 ## Configuración
 
