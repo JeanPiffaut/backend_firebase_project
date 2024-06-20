@@ -17,7 +17,7 @@
         "format:fix": "prettier --write ."
     },
     "engines": {
-        "node": "20"
+        "node": "20.x"
     },
     "dependencies": {
         "@eslint/eslintrc": "^3.1.0",
