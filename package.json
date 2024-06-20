@@ -1,0 +1,26 @@
+{
+    "name": "backend_firebase_project",
+    "version": "0.0.1",
+    "description": "Template to backend firebase project.",
+    "private": true,
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "nodemon src/index.js",
+        "test": "jest",
+        "test:e2e": "jest test/e2e",
+        "test:unit": "jest test/unit",
+        "test:integration": "jest test/integration",
+        "test:static": "jest test/static"
+    },
+    "engines": {
+        "node": "20"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "supertest": "^7.0.0"
+    }
+}
