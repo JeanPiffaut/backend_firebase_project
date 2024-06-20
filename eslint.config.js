@@ -12,6 +12,9 @@ export default [
                 require: 'readonly',
                 module: 'readonly',
                 process: 'readonly',
+                console: 'readonly', // Añadido
+                beforeEach: 'readonly', // Añadido
+                afterEach: 'readonly', // Añadido
                 describe: 'readonly',
                 it: 'readonly',
                 expect: 'readonly',
@@ -27,7 +30,7 @@ export default [
             'no-trailing-spaces': 'error',
             eqeqeq: 'error',
             'no-unused-vars': 'warn',
-            'no-console': 'warn',
+            'no-console': 'warn', // Ajustar a 'warn' en lugar de 'error'
             'consistent-return': 'error',
             'no-undef': 'error',
             'no-redeclare': 'error',
