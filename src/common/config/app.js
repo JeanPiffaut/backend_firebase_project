@@ -11,7 +11,6 @@ app.use(bodyParser.json());
 app.use('/users', userRoutes); // Configura las rutas de usuario
 
 const port = process.env.PORT || 3000;
+const server = app.listen(port, () => {});
 
-app.listen(port, () => {});
-
-module.exports = app;
+module.exports = { app, server };
