@@ -1,4 +1,4 @@
-name: Testing execution
+name: Test execution process
 
 on:
   pull_request:
