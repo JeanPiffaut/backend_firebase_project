@@ -1,1 +1,1 @@
-const app = require('./common/config/app');
+//const app = require('./common/config/app');

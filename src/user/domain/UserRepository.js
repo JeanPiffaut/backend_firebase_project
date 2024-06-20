@@ -1,9 +1,9 @@
 class UserRepository {
-    save(user) {
+    save() {
         throw new Error('Method not implemented.');
     }
 
-    findById(id) {
+    findById() {
         throw new Error('Method not implemented.');
     }
 }
