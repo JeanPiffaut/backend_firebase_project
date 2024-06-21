@@ -1,5 +1,5 @@
-const CreateUser = require('../../../../src/user/application/CreateUser');
-const User = require('../../../../src/user/domain/User');
+const CreateUser = require('../../../../user/application/CreateUser.js');
+const User = require('../../../../user/domain/User.js');
 
 describe('CreateUser', () => {
     it('should create a user', async () => {

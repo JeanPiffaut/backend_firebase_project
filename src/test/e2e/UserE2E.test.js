@@ -4,7 +4,7 @@ let server;
 describe('User E2E', () => {
     beforeEach((done) => {
         // eslint-disable-next-line no-unused-vars
-        const { app, server: srv } = require('../../src/common/config/app');
+        const { app, server: srv } = require('../../common/config/app.js');
         server = srv;
         done();
     });

@@ -6,15 +6,19 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "start": "node src/index.js",
-        "dev": "nodemon src/index.js",
+        "dev": "nodemon index.js",
         "test": "jest && npm run format:check",
-        "test:e2e": "jest test/e2e",
-        "test:unit": "jest test/unit",
-        "test:integration": "jest test/integration",
+        "test:e2e": "jest src/test/e2e",
+        "test:unit": "jest src/test/unit",
+        "test:integration": "jest src/test/integration",
         "lint": "eslint .",
         "format:check": "prettier --check .",
-        "format:fix": "prettier --write ."
+        "format:fix": "prettier --write .",
+        "serve": "firebase emulators:start --only functions",
+        "shell": "firebase functions:shell",
+        "start": "npm run shell",
+        "deploy": "firebase deploy --only functions",
+        "logs": "firebase functions:log"
     },
     "engines": {
         "node": "20.x"
@@ -24,14 +28,18 @@
         "body-parser": "^1.20.2",
         "dotenv": "^16.4.5",
         "express": "^4.19.2",
-        "supertest": "^7.0.0"
+        "supertest": "^7.0.0",
+        "firebase-admin": "^12.1.0",
+        "firebase-functions": "^5.0.0"
     },
     "devDependencies": {
         "@eslint/js": "^9.5.0",
         "eslint": "^9.5.0",
         "eslint-plugin-node": "^11.1.0",
         "jest": "^29.7.0",
-        "prettier": "^3.3.2"
+        "prettier": "^3.3.2",
+        "eslint-config-google": "^0.14.0",
+        "firebase-functions-test": "^3.1.0"
     },
     "jest": {
         "testEnvironment": "node",
