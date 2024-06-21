@@ -1,4 +1,8 @@
-const functions = require('firebase-functions');
-const app = require('./common/config/app');
+const {onRequest} = require("firebase-functions/v2/https");
+const logger = require("firebase-functions/logger");
+const {app} = require('./common/config/app');
 
-exports.api = functions.https.onRequest(app);
+exports.users = onRequest((request, response) => {
+    logger.info("Received user request", {structuredData: true});
+    return app(request, response);
+});
