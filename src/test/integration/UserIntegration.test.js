@@ -1,6 +1,6 @@
-const CreateUser = require('../../src/user/application/CreateUser');
-const InMemoryUserRepository = require('../../src/user/infrastructure/InMemoryUserRepository');
-const User = require('../../src/user/domain/User');
+const CreateUser = require('../../user/application/CreateUser.js');
+const InMemoryUserRepository = require('../../user/infrastructure/InMemoryUserRepository.js');
+const User = require('../../user/domain/User.js');
 
 describe('User Integration', () => {
     it('should save and find a user', async () => {
