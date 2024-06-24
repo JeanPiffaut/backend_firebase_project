@@ -4,7 +4,6 @@
     "description": "Template to backend firebase project.",
     "private": true,
     "main": "index.js",
-    "type": "module",
     "scripts": {
         "dev": "nodemon index.js",
         "test": "jest && npm run format:check",
