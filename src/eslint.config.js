@@ -1,7 +1,7 @@
-import js from '@eslint/js';
-import pluginNode from 'eslint-plugin-node';
+const js = require('@eslint/js');
+const pluginNode = require('eslint-plugin-node');
 
-export default [
+module.exports = [
     js.configs.recommended,
     {
         languageOptions: {

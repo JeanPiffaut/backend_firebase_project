@@ -6,7 +6,6 @@ describe('User E2E', () => {
         const user = { id: '1', name: 'John Doe', email: 'john.doe@example.com' };
         const projectId = process.env.FIREBASE_PROJECT_ID; // Leer el ID del proyecto desde las variables de entorno
         const baseUrl = `http://localhost:5001/${projectId}/us-central1/api`;
-        console.log(baseUrl);
         await request(baseUrl).post('/users').send(user).expect(201);
 
         const response = await request(baseUrl).get('/users/1');
