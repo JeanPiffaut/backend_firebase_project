@@ -98,5 +98,8 @@ jobs:
       - name: Install dependencies
         run: cd src && npm install
 
+      - name: Run emulators
+        run: cd src && npm run serve
+
       - name: Run E2E Tests
         run: cd src && npm run test:e2e

@@ -7,9 +7,9 @@
     "scripts": {
         "dev": "nodemon index.js",
         "test": "jest && npm run format:check",
-        "test:e2e": "jest src/test/e2e",
-        "test:unit": "jest src/test/unit",
-        "test:integration": "jest src/test/integration",
+        "test:e2e": "jest test/e2e",
+        "test:unit": "jest test/unit",
+        "test:integration": "jest test/integration",
         "lint": "eslint .",
         "format:check": "prettier --check .",
         "format:fix": "prettier --write .",
